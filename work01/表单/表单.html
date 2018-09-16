@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+</head>
+<style>
+	body{padding-left: 470px;}
+	#fo{width:400px}
+    legend{color:red};
+    
+</style>
+<script>
+    window.onload=function(){
+	    var youxiang=document.getElementById("youxiang");
+		var op=document.getElementsByClassName("op");
+		var sub=document.getElementById("sub");
+		var arr = ["@qq.com","@163.com","@gmail.com","@yahoo.com.cn","@162.com"]
+		var reg=/\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+/;
+		youxiang.oninput = function(){
+			for(var i = 0;i<op.length;i++){
+				op[i].value=youxiang.value+arr[i]
+			}	   
+		}
+		youxiang.onchange=function(){
+			if(!reg.test(youxiang.value)){
+				alert("请输入正确格式的邮箱！")
+			}
+		}
+    }
+</script>
+<body>
+    <h1>请填写个人信息</h1>
+    <form id="fo">
+	    <fieldset>
+	        <legend color="red">基本信息</legend>
+	        姓名<input type="text" name="na" required="required" placeholder="请输入姓名"/> 
+	        <font color="red">*</font><br/>
+	        年龄<input type="number" name="age" min="1" max="200" step="1" />
+	    </fieldset>
+	
+	    <fieldset>
+	            <legend color="red">你想在哪里收到文件？</legend>            
+	            邮箱<input type="text" id="youxiang" placeholder="请输入邮箱" required="required" list="em"/>          
+	           <datalist id="em">
+	           	<option class="op"></option>
+	           	<option class="op"></option>
+	           	<option class="op"></option>
+	           	<option class="op"></option>
+	           	<option class="op"></option>
+	           </datalist>
+	            <font color="red">*</font>
+	           
+	    </fieldset>
+	
+	    <fieldset>
+	        <legend color="red">收入情况</legend>
+	        月收入<input type="text" name="sr" list="sr" placeholder="20k+"/> 
+	        <datalist id="sr">
+	            <option>10k+</option>
+	            <option>20k+</option>
+	            <option>30k+</option>
+	        </datalist><br/>
+	        银行卡<input type="text" name="card"/> 
+	        有效期<input type="date" name="date"/>
+	    </fieldset>
+	
+	    <fieldset>
+	        <legend color="red">选取提交文件</legend>
+	        文件<input type="file" name="file" />         
+	    </fieldset><br/>
+	    <input type="submit" id="sub"/>
+    </form>
+</body>
+</html>
