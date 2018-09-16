@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<header>
+		<meta charset="UTF-8">
+		<!--<title></title>-->
+	</header>
+	<style>
+		#big{background-color: ghostwhite;width:365px;}
+		#menu{font-size: 45px;}
+		#a{background-color: deepskyblue ;}
+		#b{background-color:darkslategrey;margin-left: -12px;}
+		#m1{height:400px;width:365px;font-size:20px}
+		#btn1{background-color: darkgrey;color: cornflowerblue;
+			position:absolute;left:280px;top:86px}
+		#btn2{background-color: darkgrey;color: cornflowerblue;
+			position:absolute;left:280px;top:192px}
+	</style>
+	<script>
+		window.onload=function(){
+			var myaudio1=document.getElementById("myaudio1");
+			var btn1=document.getElementById("btn1");
+			var myaudio2=document.getElementById("myaudio2");
+			var btn2=document.getElementById("btn2");
+			btn1.onclick = function(){     
+				myaudio1.play();
+			}
+			btn2.onclick = function(){     
+				myaudio2.play();
+			}
+		}
+	
+	</script>
+	<div id="big">
+		<div id="menu">
+			<span id="a">在线音乐</span>
+			<span id="b">本地音乐</span>			
+		</div>
+		<div id="m1">
+			<ul type="none">
+				<li>身骑白马
+					<audio src='徐佳莹 - 身骑白马.mp3' id="myaudio1" controls="true"></audio>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span id="btn1">播放</span>
+				</li>
+				<li>方圆几里
+					<audio src='薛之谦 - 方圆几里.mp3' id="myaudio2" controls="true"></audio>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span id="btn2" >播放</span>
+				</li>
+			</ul>
+		</div>
+		
+		
+	</div>	
+
+</html>
