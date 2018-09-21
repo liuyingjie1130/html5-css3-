@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style>
+		#big{width:400px;}
+		legend{color:red;font-size:20px;font-style: inherit;}
+		#col{width:400px;height:50px;border:solid 2px gainsboro;}
+		.hh{float:left;margin-left:10px;width:30px;height:30px;}
+		#a{background-color: grey;}
+		#b{background-color: mediumpurple;}
+		#c{background-color: red;}
+		#d{background-color: deepskyblue;}
+		#e{background-color: yellow;}
+		#f{background-color: green;}
+		#txt{width:360px;margin-left: 20px;margin-top: 10px;}
+	</style>
+	</head>
+	
+	<body>
+		<fieldset id="big">			
+			<legend>页面换肤</legend>
+			<div id="col">	
+				<div id="a" class="hh"  style="margin-top:10px"></div>
+				<div id="b" class="hh"  style="margin-top:10px"></div>
+				<div id="c" class="hh"  style="margin-top:10px"></div>
+				<div id="d" class="hh"  style="margin-top:10px"></div>
+				<div id="e" class="hh"  style="margin-top:10px"></div>
+				<div id="f" class="hh"  style="margin-top:10px"></div>
+			</div>
+			<div id="txt" style='background-color: white;'>
+				<p id="pp">
+				LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用。
+				</p>
+			</div>
+			
+		</fieldset>
+	</body>
+	<script>
+		var colhh=document.getElementsByClassName("hh");
+		var txt=document.getElementById("txt");
+		txt.style.backgroundColor=localStorage.getItem('bgc');
+		for(var i=0;i<colhh.length;i++){
+			colhh[i].onmouseover=function fun(){
+				txt.style.backgroundColor=localStorage.getItem('bgc');				
+				var hcl=getComputedStyle(this,null)['backgroundColor'];
+				txt.style.backgroundColor=hcl;
+				this.style.marginTop="-2px";
+				localStorage.setItem('bgc',hcl);
+			};
+			colhh[i].onmouseout=function(){
+				this.style.marginTop="10px";
+			}
+		}
+		
+	</script>
+</html>
