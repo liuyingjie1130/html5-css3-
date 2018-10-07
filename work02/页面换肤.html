@@ -43,7 +43,7 @@
 		var txt=document.getElementById("txt");
 		txt.style.backgroundColor=localStorage.getItem('bgc');
 		for(var i=0;i<colhh.length;i++){
-			colhh[i].onmouseover=function fun(){
+			colhh[i].onmouseover=function(){
 				txt.style.backgroundColor=localStorage.getItem('bgc');				
 				var hcl=getComputedStyle(this,null)['backgroundColor'];
 				txt.style.backgroundColor=hcl;

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+			<style type="text/css">
+			#box{
+			width:500px;
+			height:500px;
+			border:2px solid lightgrey;
+			}
+			</style>
+	</head>
+	<body>
+		<h2>上传头像</h2>
+		<div id="box" ondragenter="enter(event)" ondragover="over(event)" ondrop="drop(event)" ></div>
+	</body>
+	<script>
+		function enter(e){
+			e.preventDefault();
+		}
+		function over(e){
+			e.preventDefault();
+		}
+		function drop(e){
+   			e.preventDefault();
+		    var file=e.dataTransfer.files;
+		    var reader=new FileReader();
+		    var urlimg=reader.readAsDataURL(file[0]);
+		    reader.onload = function(){
+			    box.innerHTML = '<img src="'+this.result+'"/>';
+			}
+		}
+
+
+
+
+	</script>
+</html>
