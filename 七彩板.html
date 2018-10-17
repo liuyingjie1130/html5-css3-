@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>画布</title>
+		<style>
+			canvas{
+				border:1px solid grey;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<canvas id="canvas" width="400" height="400">
+			不支持canvas！
+		</canvas>
+		<script>
+			var canvas=document.getElementById('canvas');
+			var cxt=canvas.getContext('2d');
+//			随机圆
+/*
+			var pi=Math.PI;
+			for(var i=0;i<50;i++){
+				var r=Math.random()*30;
+				var w=Math.random()*400;
+				var h=Math.random()*400;
+				var re=Math.random()*256;
+				var g=Math.random()*256;
+				var b=Math.random()*256;
+				cxt.beginPath();
+				cxt.arc(w,h,r,0,2*pi);
+				cxt.fillStyle="rgba("+re+",+"+g+","+b+",0.5)";				
+				cxt.fill();
+				cxt.closePath();
+				cxt.stroke();
+			}
+*/
+			
+//			七彩板
+
+			cxt.beginPath();
+			cxt.moveTo(0,0);
+			cxt.lineTo(0,400);
+			cxt.lineTo(200,200);
+			cxt.fillStyle="#6495ED";
+			cxt.fill();
+			cxt.closePath();
+			
+			cxt.beginPath();
+			cxt.moveTo(0,0);
+			cxt.lineTo(400,0);
+			cxt.lineTo(200,200);
+			cxt.fillStyle="greenyellow";
+			cxt.fill();
+			cxt.closePath();
+			
+			cxt.beginPath();
+			cxt.moveTo(0,400);
+			cxt.lineTo(200,400);
+			cxt.lineTo(100,300);
+			cxt.fillStyle="hotpink";
+			cxt.fill();
+			cxt.closePath();
+			
+			cxt.beginPath();
+			cxt.moveTo(100,300);
+			cxt.lineTo(200,400);
+			cxt.lineTo(300,300);
+			cxt.lineTo(200,200);
+			cxt.fillStyle="mediumpurple";
+			cxt.fill();
+			cxt.closePath();
+			
+			cxt.beginPath();
+			cxt.moveTo(200,200);
+			cxt.lineTo(300,100);
+			cxt.lineTo(300,300);
+			cxt.fillStyle="yellow";
+			cxt.fill();
+			cxt.closePath();
+			
+			cxt.beginPath();
+			cxt.moveTo(300,100);
+			cxt.lineTo(300,300);
+			cxt.lineTo(400,200);
+			cxt.lineTo(400,0);
+			cxt.fillStyle="deeppink";
+			cxt.fill();
+			cxt.closePath();
+			
+			cxt.beginPath();
+			cxt.moveTo(400,200);
+			cxt.lineTo(200,400);
+			cxt.lineTo(400,400);
+			cxt.fillStyle="rgb(247,207,37)";
+			cxt.fill();
+			cxt.closePath();
+		</script>
+	</body>
+</html>

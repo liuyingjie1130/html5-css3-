@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>钟表</title>
+		<style>
+			*{margin: 0;padding: 0;}
+			#canvas{
+				border: 1px solid pink;
+				z-index: 5;
+			}
+			.canv{
+				border: 1px solid black;
+				position: absolute;
+				left:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="400px" height="400px">您的浏览器不支持canvas</canvas>
+		<canvas class="canv" id="canvas1" width="400px" height="400px">您的浏览器不支持canvas</canvas>
+		<canvas class="canv" id="canvas2" width="400px" height="400px">您的浏览器不支持canvas</canvas>
+		<canvas class="canv" id="canvas3" width="400px" height="400px">您的浏览器不支持canvas</canvas>
+		<script>
+			var canvas=document.getElementById('canvas');
+			var canvas1=document.getElementById('canvas1');
+			var canvas2=document.getElementById('canvas2');
+			var canvas3=document.getElementById('canvas3');
+			var cxt=canvas.getContext('2d');
+			var cxt1=canvas1.getContext('2d');
+			var cxt2=canvas2.getContext('2d');
+			var cxt3=canvas3.getContext('2d');
+			var pi=Math.PI;
+
+			cxt.beginPath();
+			cxt.arc(200,200,150,0,2*pi);
+			cxt.lineWidth=3;
+			cxt.strokeStyle="greenyellow";
+			cxt.stroke();
+
+			cxt.translate(200,200);
+			for(var i=0;i<60;i++){
+			cxt.beginPath(); 
+			cxt.rotate(6 / 180 * pi);
+			cxt.fillStyle="black";
+			cxt.fillRect(0, 120, 4, 10);
+			}
+		
+			cxt.translate(0,0);
+			for(var i=0;i<12;i++){
+			cxt.beginPath(); 
+			cxt.rotate(30 / 180 * pi);
+			cxt.fillStyle="red";
+			cxt.fillRect(0, 120, 4, 20);
+			}
+			
+			cxt.beginPath();
+			cxt.arc(0,0,7,0,2*pi);
+			cxt.fillStyle="black";
+			cxt.fill();
+			cxt.stroke();
+		
+//数字
+			cxt.translate(-7,7);
+   			for (var n = 1; n < 13; n++) {
+		        var ron = (n - 3) * (Math.PI * 2) / 12;
+		        var x = 145 * 0.7 * Math.cos(ron);
+		        var y =145* 0.7 * Math.sin(ron);
+		        cxt.fillStyle="black";
+				cxt.font="bold 24px 黑体";
+		        cxt.fillText(n, x, y);
+		    }
+
+		
+		
+//hours		
+			var time=new Date();
+			var h=time.getHours();
+			var m=time.getMinutes();
+			var s=time.getSeconds();
+			console.log(time,h,m,s);
+			
+			h=h>12?h-12:h;
+			cxt3.rotate(180/ 180 * pi);
+			cxt3.clearRect(-10,1,15,115);
+			cxt3.translate(-200,-200);
+			cxt3.rotate(6*[5*h+(m/12)]/ 180 * pi);
+			cxt3.fillStyle="blue";
+			cxt3.fillRect(0,0,4,105);
+			setInterval(()=>{
+				cxt3.clearRect(-10,1,15,115);
+				cxt3.beginPath(); 
+				cxt3.rotate(6 / 180 * pi);
+				cxt3.fillStyle="blue";
+				cxt3.fillRect(0,0,4,105);
+			},720000)
+
+//minutes
+
+			cxt2.rotate(180/ 180 * pi);
+			cxt2.clearRect(-10,1,15,115);
+			cxt2.translate(-200,-200);
+			cxt2.rotate(6*m / 180 * pi);
+			cxt2.fillStyle="black";
+			cxt2.fillRect(0,0,3,110);
+			setInterval(()=>{
+				cxt2.clearRect(-10,1,15,115);
+				cxt2.beginPath(); 
+				cxt2.rotate(6 / 180 * pi);
+				cxt2.fillStyle="black";
+				cxt2.fillRect(0,0,3,110);
+			},60000)
+			
+//seconds
+
+			cxt1.rotate(180/ 180 * pi);
+			cxt1.clearRect(-10,1,15,115);
+			cxt1.translate(-200,-200);
+			cxt1.rotate(6*s / 180 * pi);
+			cxt1.fillStyle="red";
+			cxt1.fillRect(0,0,2,115);
+			setInterval(()=>{
+				cxt1.clearRect(-10,1,15,115);
+				cxt1.beginPath(); 
+				cxt1.rotate(6 / 180 * pi);
+				cxt1.fillStyle="red";
+				cxt1.fillRect(0,0,2,115);
+				
+			},1000)
+			
+		</script>
+	</body>
+</html>
